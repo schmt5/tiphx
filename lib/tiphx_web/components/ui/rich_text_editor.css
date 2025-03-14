@@ -1,0 +1,38 @@
+.tiptap {
+  min-height: 200px;
+  border: none;
+  padding: 8px 4px;
+}
+
+.tiptap:focus-within {
+  outline: none;
+}
+
+.rich-text-editor {
+  border: 1px solid oklch(0.872 0.01 258.338);
+  border-radius: 4px;
+}
+
+.rich-text-editor .toolbar {
+  display: flex;
+  gap: 2px;
+  border-bottom: 1px solid oklch(0.872 0.01 258.338);
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 4px;
+}
+
+.rich-text-editor button {
+  border-radius: 4px;
+  display: grid;
+  place-content: center;
+  padding: 4px;
+}
+
+.rich-text-editor button:hover {
+  background-color: oklch(0.928 0.006 264.531);
+}
+
+.rich-text-editor button.is-active {
+  background-color: oklch(0.928 0.006 264.531);
+}
