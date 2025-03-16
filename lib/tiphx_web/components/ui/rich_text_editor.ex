@@ -3,8 +3,9 @@ defmodule TiphxWeb.Ui.RichTextEditor do
 
   import TiphxWeb.CoreComponents
 
-  attr :id, :string
-  attr :value, :string
+  attr :id, :string, required: true
+  attr :field, Phoenix.HTML.FormField, required: true
+
   attr :rest, :global
 
   def rich_text_editor(assigns) do
@@ -23,8 +24,9 @@ defmodule TiphxWeb.Ui.RichTextEditor do
           <.icon name="hero-underline" class="h-5 w-5" /> <span class="sr-only">Underline</span>
         </button>
       </div>
-       <div id={@id} phx-hook="TiptapHook" data-content={@value} />
-      <input type="hidden" name="content" value={@value} />
+      <div id={@id} phx-hook="TiptapHook" />
+
+      <.input type="text" field={@field} {@rest} />
     </div>
     """
   end

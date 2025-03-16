@@ -2,19 +2,25 @@ defmodule TiphxWeb.RichTextEditorLive.Index do
   use TiphxWeb, :live_view
 
   def mount(_params, _session, socket) do
-    {:ok, assign(socket, content: "jkjk")}
+    {:ok, assign(socket, content: "dasfd")}
   end
 
-  def handle_event("set_content", params, socket) do
-    {:noreply, assign(socket, content: "Hello, TipTap!")}
+  def handle_event("update_content", %{"content" => content}, socket) do
+    IO.inspect("update content")
+    {:noreply, assign(socket, content: content)}
   end
 
+  @spec render(any()) :: Phoenix.LiveView.Rendered.t()
   def render(assigns) do
     ~H"""
     <div class="container">
-      <.rich_text_editor id="my-editor" value={@content} />
+      <form phx-change="update_content">
+        <label for="my-editor" class="block">Content</label>
+        <input id="my-editor" name="content" value={@content} />
+      </form>
+
       <div class="mt-8">
-        <.button phx-click="set_content">Set TipTap content</.button>
+        ppp
         <p>{@content}</p>
       </div>
     </div>

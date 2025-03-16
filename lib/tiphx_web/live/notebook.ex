@@ -3,18 +3,13 @@ defmodule TiphxWeb.NotebookLive do
   alias Tiphx.Notebook
   alias Tiphx.Notebook.Note
 
-  def mount(params, session, socket) do
-    {:ok, socket |> assign(:content, "") |> assign_form()}
+  def mount(_params, _session, socket) do
+    {:ok, socket |> assign(:content_to_display, "") |> assign_form()}
   end
 
-  def handle_event("validate", %{"note" => note_params}, socket) do
-    changeset = Notebook.change_note(%Note{}, note_params) |> Map.put(:action, :validate)
-    {:noreply, assign(socket, form: to_form(changeset))}
-  end
-
-  def handle_event("save", params, socket) do
-    content = get_in(params, ["note", "content"])
-    {:noreply, socket |> assign(:content, content)}
+  def handle_event("save", %{"note" => note}, socket) do
+    changeset = Notebook.change_note(%Note{}, note)
+    {:noreply, socket |> assign(:content_to_display, changeset.params["content"])}
   end
 
   defp assign_form(socket) do
@@ -25,16 +20,17 @@ defmodule TiphxWeb.NotebookLive do
   def render(assigns) do
     ~H"""
     <div class="container">
-      <.simple_form for={@form} id="notebook-form" phx-change="validate" phx-submit="save">
-        <.input field={@form[:content]} type="textarea" label="Note" />
+      <.simple_form for={@form} id="notebook-form" phx-submit="save">
+        <.rich_text_editor id="my-editor" field={@form[:content]} />
+
         <:actions>
-          <.button type="submit">Save</.button>
+          <.button type="submit">Submit Form</.button>
         </:actions>
       </.simple_form>
 
-      <div :if={@content != ""} class="mt-8">
-        <p class="font-bold">Form</p>
-        <p>{@content}</p>
+      <div :if={@content_to_display != ""} class="mt-4">
+        <h2 class="text-xl">Content</h2>
+        <p>{@content_to_display}</p>
       </div>
     </div>
     """

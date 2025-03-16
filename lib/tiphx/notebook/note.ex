@@ -9,13 +9,14 @@ defmodule Tiphx.Notebook.Note do
 
   def changeset(note, attrs) do
     attrs = sanitize_attrs(attrs)
+
     note
     |> cast(attrs, [:content])
-    |> validate_required([:content])
   end
 
   defp sanitize_attrs(%{"content" => _content} = attrs) do
     Map.update!(attrs, "content", &HtmlSanitizeEx.basic_html/1)
   end
+
   defp sanitize_attrs(attrs), do: attrs
 end

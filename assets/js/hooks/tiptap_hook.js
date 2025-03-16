@@ -45,10 +45,7 @@ const TiptapHook = {
   setupEditor() {
     // Get parent and hidden input elements
     this.parent = this.el.parentElement;
-    this.hiddenInput = this.parent.querySelector("input[type=hidden]");
-
-    // Set initial value to hidden input
-    this.hiddenInput.value = this.el.dataset.content || "";
+    this.hiddenInput = this.parent.querySelector("input");
 
     // Get command buttons
     this.commandButtonList = this.parent.querySelectorAll(
@@ -59,14 +56,9 @@ const TiptapHook = {
     this.editor = new Editor({
       element: this.el,
       extensions: [StarterKit, Underline],
-      content: this.el.dataset.content || "",
+      content: this.hiddenInput.value,
       onUpdate: ({ editor }) => {
-        // Update the hidden input with the new editor content
         this.hiddenInput.value = editor.getHTML();
-
-        // Dispatch change event for form validation
-        const event = new Event("change", { bubbles: true });
-        this.hiddenInput.dispatchEvent(event);
       },
       onSelectionUpdate: () => {
         updateAllButtonStates(this.editor, this.commandButtonList);
