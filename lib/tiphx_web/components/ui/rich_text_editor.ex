@@ -23,6 +23,26 @@ defmodule TiphxWeb.Ui.RichTextEditor do
         <button data-tiptap-command="underline">
           <.icon name="hero-underline" class="h-5 w-5" /> <span class="sr-only">Underline</span>
         </button>
+
+        <div class="separator" />
+
+        <button data-tiptap-command="heading1">
+          <.icon name="hero-h1" class="h-5 w-5" /> <span class="sr-only">Heading 1</span>
+        </button>
+
+        <button data-tiptap-command="heading2">
+          <.icon name="hero-h2" class="h-5 w-5" /> <span class="sr-only">Heading 2</span>
+        </button>
+
+        <div class="separator" />
+
+        <button data-tiptap-command="bulletList">
+          <.icon name="hero-list-bullet" class="h-5 w-5" /> <span class="sr-only">Bullet List</span>
+        </button>
+        <button data-tiptap-command="orderedList">
+          <.icon name="hero-numbered-list" class="h-5 w-5" />
+          <span class="sr-only">Ordered List</span>
+        </button>
       </div>
       <div id={@id} phx-hook="TiptapHook" />
 

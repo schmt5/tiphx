@@ -37,6 +37,36 @@
   background-color: oklch(0.928 0.006 264.531);
 }
 
+.rich-text-editor :where(ul, ol) {
+  list-style-position: inside;
+}
+
+.rich-text-editor :where(ul, ol) p {
+  display: inline;
+}
+
+.rich-text-editor ul {
+  list-style-type: disc;
+}
+
+.rich-text-editor ol {
+  list-style-type: decimal;
+}
+
+.rich-text-editor .separator {
+  width: 1rem;
+}
+
+.rich-text-editor h1 {
+  font-size: 3rem;
+  line-height: calc(2.25 / 1.875);
+}
+
+.rich-text-editor h2 {
+  font-size: 1.5rem;
+  line-height: calc(2 / 1.5);
+}
+
 .rich-text-editor input {
   position: absolute;
   width: 1px;
