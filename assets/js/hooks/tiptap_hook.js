@@ -58,10 +58,28 @@ const TiptapHook = {
       extensions: [StarterKit, Underline],
       content: this.hiddenInput.value,
       onUpdate: ({ editor }) => {
-        this.hiddenInput.value = editor.getHTML();
+        requestAnimationFrame(() => {
+          this.hiddenInput.value = editor.getHTML();
+          this.hiddenInput.dispatchEvent(
+            new Event("input", {
+              bubbles: true,
+              cancelable: true,
+            })
+          );
+        });
       },
       onSelectionUpdate: () => {
         updateAllButtonStates(this.editor, this.commandButtonList);
+      },
+      onBlur: () => {
+        requestAnimationFrame(() => {
+          this.hiddenInput.dispatchEvent(
+            new Event("blur", {
+              bubbles: true,
+              cancelable: true,
+            })
+          );
+        });
       },
     });
 

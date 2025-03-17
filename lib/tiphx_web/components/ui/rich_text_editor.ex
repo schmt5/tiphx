@@ -46,7 +46,7 @@ defmodule TiphxWeb.Ui.RichTextEditor do
       </div>
       <div id={@id} phx-hook="TiptapHook" />
 
-      <.input type="text" field={@field} {@rest} />
+      <.input type="text" {@rest} field={@field} phx-debounce="blur" />
     </div>
     """
   end

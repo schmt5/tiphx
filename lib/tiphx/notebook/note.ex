@@ -4,6 +4,7 @@ defmodule Tiphx.Notebook.Note do
   @primary_key false
 
   embedded_schema do
+    field :subject, :string
     field :content, :string
   end
 
@@ -11,7 +12,7 @@ defmodule Tiphx.Notebook.Note do
     attrs = sanitize_attrs(attrs)
 
     note
-    |> cast(attrs, [:content])
+    |> cast(attrs, [:subject, :content])
   end
 
   defp sanitize_attrs(%{"content" => _content} = attrs) do
