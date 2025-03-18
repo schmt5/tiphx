@@ -31,7 +31,7 @@ defmodule TiphxWeb.NotebookLive do
   def render(assigns) do
     ~H"""
     <div class="container">
-      <h1 class="text-4xl">Rich Text Editor with Form</h1>
+      <h1 class="font-semibold text-5xl">Phoenix <span class="gradient-text">TipTap</span> Editor</h1>
       <.simple_form for={@form} id="notebook-form" phx-change="validate" phx-submit="save">
         <.input label="Subject" field={@form[:subject]} phx-debounce="500" />
         <.rich_text_editor id="my-editor" field={@form[:content]} />
@@ -53,7 +53,7 @@ defmodule TiphxWeb.NotebookLive do
 
       <h2 class="text-2xl mt-24 mb-8">Get Started</h2>
       <p class="text-lg">
-        This example demonstrates how to use the Tiptap editor with a Phoenix form. The editor is a Phoenix.Component that uses the Tiptap editor via a hook. The editor works with Ecto changesets like any other form input.
+        This example demonstrates how to use the Tiptap editor with a Phoenix form. The editor is a Phoenix.Component that uses the Tiptap editor via a hook. The editor works with phoenix FormData (to_form) and ecto changeset like any other form input.
       </p>
       <p class="text-lg mt-4">
         Check out the gists below or the
