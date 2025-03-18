@@ -4,3 +4,4 @@
 
 /* This file is for your main application CSS */
 @import "../../lib/tiphx_web/components/ui/rich_text_editor.css";
+@import "../../lib/tiphx_web/controllers/page_html/home.css";
