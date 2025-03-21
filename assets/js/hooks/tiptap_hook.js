@@ -60,25 +60,19 @@ const TiptapHook = {
       onUpdate: ({ editor }) => {
         requestAnimationFrame(() => {
           this.hiddenInput.value = editor.getHTML();
-          this.hiddenInput.dispatchEvent(
-            new Event("input", {
-              bubbles: true,
-              cancelable: true,
-            })
-          );
+          const inputEvent = new Event("input", {
+            bubbles: true,
+            cancelable: true,
+          });
+          this.hiddenInput.dispatchEvent(inputEvent);
         });
       },
       onSelectionUpdate: () => {
         updateAllButtonStates(this.editor, this.commandButtonList);
       },
-      onBlur: () => {
+      onBlur: ({ event }) => {
         requestAnimationFrame(() => {
-          this.hiddenInput.dispatchEvent(
-            new Event("blur", {
-              bubbles: true,
-              cancelable: true,
-            })
-          );
+          this.hiddenInput.dispatchEvent(event);
         });
       },
     });
