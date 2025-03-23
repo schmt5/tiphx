@@ -9,7 +9,6 @@ defmodule Tiphx.Application do
   def start(_type, _args) do
     children = [
       TiphxWeb.Telemetry,
-      Tiphx.Repo,
       {DNSCluster, query: Application.get_env(:tiphx, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: Tiphx.PubSub},
       # Start the Finch HTTP client for sending emails

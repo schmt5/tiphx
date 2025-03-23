@@ -7,10 +7,6 @@
 # General application configuration
 import Config
 
-config :tiphx,
-  ecto_repos: [Tiphx.Repo],
-  generators: [timestamp_type: :utc_datetime]
-
 # Configures the endpoint
 config :tiphx, TiphxWeb.Endpoint,
   url: [host: "localhost"],
