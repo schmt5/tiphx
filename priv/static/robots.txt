@@ -1,5 +1,9 @@
-# See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
-#
-# To ban all spiders from the entire site uncomment the next two lines:
-# User-agent: *
-# Disallow: /
+User-agent: *
+Allow: /
+
+# Disallow any admin or private sections
+Disallow: /admin/
+Disallow: /private/
+
+# Link to your sitemap
+Sitemap: https://your-app-domain.fly.dev/sitemap.xml
